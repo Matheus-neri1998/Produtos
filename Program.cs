@@ -16,7 +16,7 @@ namespace Produtos
             string [] nome = new string[10];
             float [] preço = new float [10];
             string [] promocao;
-            string [] preco;
+            float [] preco;
             int contador = 0;
             // int login;
             // string loginadm;
@@ -33,24 +33,29 @@ namespace Produtos
                 Console.WriteLine("-------------------");
                 Console.WriteLine("Sistema de Produtos");
                 Console.WriteLine("-------------------");
-                Console.WriteLine("Mostar opções: ");
-                Console.WriteLine("[1] - Cadastar produto");
-                Console.WriteLine("[2] - Listar produtos");
-                Console.WriteLine("[3] - Mostrar Menu");
 
                 // Login
-
                 do
                 {
                     Console.WriteLine("Digite a senha para acesso ao sistema: ");
                     string password = (Console.ReadLine());
                     senhaValida = Efetuarlogin(password);
 
-                } while (!senhaValida);
+                }while (!senhaValida);
 
-                switch (option)
-                    { // Cadastar produtos
-                     case 1:
+                 // Menu
+                    do
+                    {
+                        
+                        Console.WriteLine("Menu principal");
+                        Console.WriteLine("Mostar opções: ");
+                        Console.WriteLine("[1] - Cadastar produto");
+                        Console.WriteLine("[2] - Listar produtos");
+                        Console.WriteLine("[3] - Mostrar Menu");
+
+                        switch (option)
+                        { // Cadastar produtos
+                        case 1:
                         Console.WriteLine("Cadastar produtos");
                         do
                         {
@@ -67,13 +72,21 @@ namespace Produtos
                             Console.WriteLine("Produto não cadastrado");
                             break;   
                            }
+                       
                         } while (true);
-                        break;
-                    default: 
+
                         break;
 
-                } // fim de switch
+                        default: 
+
+                        break;
+
+                    }  // fim de switch
+
+                    } while (true); // fim de menu (do-while)
+                    
                 
+                } // fim de do-while
 
             // Declarar funções
             bool Promocoes(string promocao){
@@ -87,17 +100,12 @@ namespace Produtos
                     return false;
                 }
 
-            // bool loginadm1(string loginadm){
-
-            // }
-            // bool password (string senha){
-
-            // }
+            
             bool Efetuarlogin (string password){
 
                 if (password == "1998"){
-
                 return true;
+
                 }else
                 {
                     Console.WriteLine("Senha de acesso negada");
@@ -108,4 +116,4 @@ namespace Produtos
 
         } // fim de Main
     }
-}
+
