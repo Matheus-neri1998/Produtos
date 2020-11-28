@@ -16,15 +16,16 @@ namespace Produtos
             string [] nome = new string[10];
             float [] preço = new float [10];
             string [] promocao;
+            string [] promocao1;
             float [] preco;
             int contador = 0;
             // int login;
             // string loginadm;
             // string loginfun;
-            string option;
+            string option = "";
             string resposta;
             bool senhaValida;
-            bool Efetuarlogin;
+            // bool Efetuarlogin;
 
 
 
@@ -39,7 +40,7 @@ namespace Produtos
                 {
                     Console.WriteLine("Digite a senha para acesso ao sistema: ");
                     string password = (Console.ReadLine());
-                    senhaValida = Efetuarlogin(password);
+                    senhaValida = Efetuarlogin (password);
 
                 }while (!senhaValida);
 
@@ -55,17 +56,17 @@ namespace Produtos
 
                         switch (option)
                         { // Cadastar produtos
-                        case 1:
-                        Console.WriteLine("Cadastar produtos");
-                        do
-                        {
-                           if (contador < 10)
-                           {
+                            case "1":
+                            Console.WriteLine("Cadastar produtos");
+                            do
+                            {
+                            if (contador < 10)
+                            {
                              Console.WriteLine($"Digite um {contador + 1} produtos");
                              nome[contador] = Console.ReadLine();  
                              Console.WriteLine($"Digite o preço de {contador + 1} produto");
                              preço [contador] = int.Parse (Console.ReadLine());
-                             Console.WriteLine("Produto possui promoções? S/N");
+                             Console.WriteLine("Gostaria de consultar mais promoções? S/N");
                              resposta = Console.ReadLine();
                            }else
                            {
@@ -73,17 +74,24 @@ namespace Produtos
                             break;   
                            }
                        
-                        } while (true);
-
+                        } while (resposta == "S");
                         break;
 
-                        default: 
+                        case "2":
+                        //Listar produtos
+                        Console.WriteLine("Listar produtos");
+                        for (var i = 0; i < contador; i++)
+                        {
+                            Console.WriteLine($"Produto: {nome[i]}");
+                            Console.WriteLine($"Preço do produto: {preco[i]}");
+                            promocao = Promocoes(promocao1[i]);
+                            Console.WriteLine("--------------------");
+                        }
 
-                        break;
 
                     }  // fim de switch
 
-                    } while (true); // fim de menu (do-while)
+                    } while (true); // fim de menu (laço do-while)
                     
                 
                 } // fim de do-while
